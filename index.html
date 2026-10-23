@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0e0d0a">
+<title>Arrangementets navn</title>
+<meta name="description" content="Kort beskrivelse av arrangementet.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e0d0a'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%23ffd84a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    color-scheme: dark;
+
+    --bg: #0e0d0a;
+    --ink: #f4ecc4;
+    --accent: #f4ecc4;
+    --line: rgba(244, 236, 196, .28);
+
+    --font: "Orator Std", "Orator", "Share Tech Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body { margin: 0; background: var(--bg); }
+
+  body {
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    letter-spacing: .02em;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Scenen holder det mørke innholdet og det lyse laget oppå */
+  .stage {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .content {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 12vh, 7rem) 1.5rem clamp(4rem, 14vh, 8rem);
+  }
+
+  h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 11vw, 5.2rem);
+    line-height: 1.02;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    overflow-wrap: anywhere;
+  }
+
+  .lead {
+    margin: 1.5rem 0 0;
+    font-size: clamp(1.15rem, 3.4vw, 1.5rem);
+    line-height: 1.45;
+  }
+
+  .intro { margin: 3rem 0 0; max-width: 34rem; }
+  .intro p { margin: 0 0 1.1em; }
+  .intro p:last-child { margin-bottom: 0; }
+
+  .details {
+    margin: 3.5rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .details div {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .details dt { color: var(--accent); }
+  .details dd { margin: 0; }
+
+  .note { margin: 2.5rem 0 0; font-size: .95rem; opacity: .8; }
+
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .25em; }
+  a:hover { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* Lommelykten: et speilbilde av siden i lyse farger, vist gjennom en sirkel */
+  .lit {
+    --bg: #f6f0d6;
+    --ink: #17140b;
+    --accent: #17140b;
+    --line: rgba(23, 20, 11, .35);
+
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    color: var(--ink);
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+
+    --x: -500px;
+    --y: -500px;
+    --r: 0px;
+    -webkit-mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0, #000 82%, transparent 100%);
+    mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0, #000 82%, transparent 100%);
+  }
+
+  @media (max-width: 30rem) {
+    .details div { grid-template-columns: 1fr; gap: .1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <main class="content" id="content">
+    <h1>Arrangementets navn</h1>
+    <p class="lead">En kort setning som forteller hva kvelden handler om.</p>
+
+    <section class="intro">
+      <p>Her kommer litt mer om arrangementet. Bytt ut denne teksten med brødteksten når den er klar.</p>
+      <p>Lag nye avsnitt ved å legge til flere &lt;p&gt;-linjer.</p>
+    </section>
+
+    <dl class="details">
+      <div><dt>Når</dt><dd>[Dato og klokkeslett]</dd></div>
+      <div><dt>Hvor</dt><dd>[Sted og adresse]</dd></div>
+      <div><dt>Påmelding</dt><dd>[Hvordan og innen når]</dd></div>
+    </dl>
+
+    <p class="note">Spørsmål? Ta kontakt med [navn].</p>
+  </main>
+
+  <!-- Det lyse laget fylles med en kopi av innholdet av scriptet under -->
+  <div class="lit" id="lit" aria-hidden="true"></div>
+</div>
+
+<script>
+(function () {
+  var stage = document.getElementById("stage");
+  var content = document.getElementById("content");
+  var lit = document.getElementById("lit");
+
+  // Lag en kopi av innholdet til det lyse laget. Kopien kan ikke brukes (ikke fokus, ikke klikk).
+  var copy = content.cloneNode(true);
+  copy.removeAttribute("id");
+  copy.setAttribute("inert", "");
+  lit.appendChild(copy);
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isTouch = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+
+  var RADIUS = isTouch ? 110 : 150;
+
+  var targetX = -500, targetY = -500;   // pekerposisjon i vinduet
+  var curX = -500, curY = -500;         // utjevnet posisjon
+  var curR = 0, targetR = 0;
+  var running = false;
+
+  function frame() {
+    var ease = reduce ? 1 : 0.22;
+    curX += (targetX - curX) * ease;
+    curY += (targetY - curY) * ease;
+    curR += (targetR - curR) * (reduce ? 1 : 0.16);
+
+    // Laget ligger i dokumentet, så posisjonen regnes ut fra scenens plass i vinduet
+    var rect = stage.getBoundingClientRect();
+    lit.style.setProperty("--x", (curX - rect.left).toFixed(1) + "px");
+    lit.style.setProperty("--y", (curY - rect.top).toFixed(1) + "px");
+    lit.style.setProperty("--r", Math.max(0, curR).toFixed(1) + "px");
+
+    var settled =
+      Math.abs(targetX - curX) < 0.3 &&
+      Math.abs(targetY - curY) < 0.3 &&
+      Math.abs(targetR - curR) < 0.3;
+
+    if (settled) {
+      running = false;
+      if (targetR === 0) lit.style.setProperty("--r", "0px");
+    } else {
+      requestAnimationFrame(frame);
+    }
+  }
+
+  function kick() {
+    if (!running) {
+      running = true;
+      requestAnimationFrame(frame);
+    }
+  }
+
+  function moveTo(x, y) {
+    if (targetR === 0 && curR < 1) { curX = x; curY = y; }  // første gang: ingen strek over skjermen
+    targetX = x;
+    targetY = y;
+    targetR = RADIUS;
+    kick();
+  }
+
+  function hide() {
+    targetR = 0;
+    kick();
+  }
+
+  document.addEventListener("pointermove", function (e) {
+    if (e.pointerType === "touch") return;
+    moveTo(e.clientX, e.clientY);
+  });
+  document.documentElement.addEventListener("mouseleave", hide);
+  window.addEventListener("blur", hide);
+
+  document.addEventListener("touchstart", function (e) {
+    var t = e.touches[0];
+    moveTo(t.clientX, t.clientY);
+  }, { passive: true });
+  document.addEventListener("touchmove", function (e) {
+    var t = e.touches[0];
+    moveTo(t.clientX, t.clientY);
+  }, { passive: true });
+  document.addEventListener("touchend", hide);
+  document.addEventListener("touchcancel", hide);
+
+  // Når siden ruller under en stille peker, må lyset følge med
+  window.addEventListener("scroll", function () { if (targetR > 0) kick(); }, { passive: true });
+  window.addEventListener("resize", function () { if (targetR > 0) kick(); });
+})();
+</script>
+</body>
+</html>
