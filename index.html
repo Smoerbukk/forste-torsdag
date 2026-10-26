@@ -118,6 +118,25 @@
     mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0, #000 82%, transparent 100%);
   }
 
+  /* Illustrasjonene finnes bare i det lyse laget, bak teksten, og dukker opp når lommelykten treffer dem */
+  .art {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .art img {
+    position: absolute;
+    height: auto;
+    transform: rotate(var(--rot, 0deg));
+    -webkit-user-drag: none;
+  }
+  .art .crow   { top: 5%;  right: 7%; width: clamp(5.5rem, 15vw, 11rem); --rot: 7deg; }
+  .art .glass  { top: 47%; left: 5%;  width: clamp(4.5rem, 11vw, 8.5rem); --rot: -11deg; }
+  .art .bottle { top: 74%; right: 11%; width: clamp(4rem, 9vw, 7rem);    --rot: 5deg; }
+
+  .lit > .content { position: relative; z-index: 1; }
+
   @media (max-width: 30rem) {
     .details div { grid-template-columns: 1fr; gap: .1rem; }
   }
@@ -130,19 +149,27 @@
     <h1>Første torsdag</h1>
 
     <section class="intro">
-      <p>Dagene er kortere, og mørket kommer fortere. En sur vind stryker deg på kinnet, mens det våte høstløvet klistrer seg til asfalten du tråkker på. Det er kaldt ute, men inne er det lunt og godt. Omgitt av gode venner setter du det kalde glasset mot leppene, og kjenner de første dråpene av en smak du har smakt så mange ganger tidligere – en kald øl.</p>
-      <p>Første torsdag i november roer vi ned tempoet i takt med omgivelsene rundt oss. Det føles som alt går saktere når løvet skifter farge til gult og rødt. Vi skal smake oss gjennom flere slag med leskende drikke denne kvelden, så kom tørst. Stedet vi skal til serverer også mat, så de som ønsker det kan også komme sultne.</p>
+      <p>Dagene er kortere, og mørket kommer fortere. En sur vind stryker deg på kinnet, mens det våte høstløvet klistrer seg til asfalten du tråkker over. Det er kaldt ute, men inne er det lunt og godt. Omgitt av gode venner setter du det kalde glasset mot leppene, og kjenner de første dråpene av en smak du har kjent så mange ganger tidligere – en kald øl.</p>
+      <p>Første torsdag i november roer vi tempoet i takt med omgivelsene rundt oss. Alt går på en måte saktere i takt med at løvet skifter farge til gult og rødt. Vi skal smake oss gjennom flere slag med leskende øl denne kvelden, så kom tørst. Stedet vi skal til serverer også mat, så de som ønsker det kan også komme sultne.</p>
     </section>
 
     <dl class="details">
-      <div><dt>Når</dt><dd>[Torsdag 5. november kl. 19]</dd></div>
-      <div><dt>Hvor</dt><dd>[TBA]</dd></div>
+      <div><dt>Når</dt><dd>[Dato og klokkeslett]</dd></div>
+      <div><dt>Hvor</dt><dd>[Sted og adresse]</dd></div>
+      <div><dt>Påmelding</dt><dd>[Hvordan og innen når]</dd></div>
     </dl>
 
+    <p class="note">Spørsmål? Ta kontakt med [navn].</p>
   </main>
 
   <!-- Det lyse laget fylles med en kopi av innholdet av scriptet under -->
-  <div class="lit" id="lit" aria-hidden="true"></div>
+  <div class="lit" id="lit" aria-hidden="true">
+    <div class="art">
+      <img class="crow" src="crow.png" alt="">
+      <img class="glass" src="glass.png" alt="">
+      <img class="bottle" src="bottle.png" alt="">
+    </div>
+  </div>
 </div>
 
 <script>
