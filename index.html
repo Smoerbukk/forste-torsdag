@@ -131,9 +131,11 @@
     transform: rotate(var(--rot, 0deg));
     -webkit-user-drag: none;
   }
-  .art .crow   { top: 5%;  right: 7%; width: clamp(5.5rem, 15vw, 11rem); --rot: 7deg; }
-  .art .glass  { top: 47%; left: 5%;  width: clamp(4.5rem, 11vw, 8.5rem); --rot: -11deg; }
-  .art .bottle { top: 74%; right: 11%; width: clamp(4rem, 9vw, 7rem);    --rot: 5deg; }
+  .art .crow   { width: clamp(5.5rem, 15vw, 11rem); }
+  .art .crow2  { width: clamp(5rem, 13vw, 10rem); }
+  .art .crow3  { width: clamp(5rem, 13vw, 10rem); }
+  .art .glass  { width: clamp(4.5rem, 11vw, 8.5rem); }
+  .art .bottle { width: clamp(4rem, 9vw, 7rem); }
 
   .lit > .content { position: relative; z-index: 1; }
 
@@ -155,16 +157,23 @@
 
     <dl class="details">
       <div><dt>Når</dt><dd>Torsdag 5. november kl. 19</dd></div>
-      <div><dt>Hvor</dt><dd>Vi møtes på et sted oppkalt etter et dyr som i folketroen ble sagt at varslet om død og fordervelse. Det sies også at dette dyret er svært intelligent. Forskning tyder på at den kan være like smart som en åtteåring</dd></div>
+      <div><dt>Hvor</dt><dd>Vi møtes på et sted oppkalt etter et dyr som i folketroen ble sagt å varsle om død og fordervelse. Det sies også at dette dyret er svært intelligent. Forskning tyder på at det kan være like smart som en åtteåring.</dd></div>
     </dl>
   </main>
 
   <!-- Det lyse laget fylles med en kopi av innholdet av scriptet under -->
   <div class="lit" id="lit" aria-hidden="true">
     <div class="art">
-      <img class="crow" src="crow.png" alt="">
-      <img class="glass" src="glass.png" alt="">
-      <img class="bottle" src="bottle.png" alt="">
+      <img class="crow"   src="crow.png"   alt="" style="top:4%;  right:7%;  --rot:7deg">
+      <img class="crow3"  src="crow3.png"  alt="" style="top:12%; left:5%;   --rot:-8deg">
+      <img class="glass"  src="glass.png"  alt="" style="top:22%; right:4%;  --rot:11deg">
+      <img class="bottle" src="bottle.png" alt="" style="top:32%; left:8%;   --rot:-6deg">
+      <img class="crow2"  src="crow2.png"  alt="" style="top:42%; right:8%;  --rot:6deg">
+      <img class="crow"   src="crow.png"   alt="" style="top:52%; left:4%;   --rot:-10deg">
+      <img class="crow3"  src="crow3.png"  alt="" style="top:61%; right:6%;  --rot:5deg">
+      <img class="glass"  src="glass.png"  alt="" style="top:70%; left:6%;   --rot:-12deg">
+      <img class="bottle" src="bottle.png" alt="" style="top:79%; right:10%; --rot:8deg">
+      <img class="crow2"  src="crow2.png"  alt="" style="top:88%; left:7%;   --rot:-5deg">
     </div>
   </div>
 </div>
